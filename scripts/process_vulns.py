@@ -4,13 +4,18 @@ import requests
 import sys
 import os
 
-# ===========================
-# Configuration
-# ===========================
-JIRA_URL = "https://testingxperts-team-wcpnfi53.atlassian.net"
-JIRA_PROJECT_KEY = "SEC"
-JIRA_EMAIL = "d14296388@gmail.com"
-JIRA_API_TOKEN = ${{ secrets.JIRA_API_TOKEN }}
+# ==============================
+# Jira Configuration
+# ==============================
+JIRA_URL = os.environ.get("JIRA_URL")
+JIRA_EMAIL = os.environ.get("JIRA_EMAIL")
+JIRA_API_TOKEN = os.environ.get("JIRA_API_TOKEN")
+PROJECT_KEY = os.environ.get("PROJECT_KEY")
+DONE_TRANSITION_ID = os.environ.get("DONE_TRANSITION_ID")
+
+if not JIRA_API_TOKEN:
+    raise ValueError("Error: JIRA_API_TOKEN is not set. Please check your GitHub Actions secrets.")
+
 
 # ===========================
 # Helper Functions
