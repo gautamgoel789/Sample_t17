@@ -58,7 +58,7 @@ def create_jira_issue(vuln_id, description, severity):
     payload = {
         "fields": {
             "project": {
-                "key": JIRA_PROJECT_KEY
+                "key": PROJECT_KEY
             },
             "summary": f"[{severity.upper()}] {vuln_id} detected",
             "description": format_adf_description(description),
